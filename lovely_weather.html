@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/28e131a715.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="source/weather_style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Lovely Weather</title>
+  </head>
+  <body>
+    <div class="container main-body">
+      <div class="card main-content">
+        <div class="row">
+          <div class="col-10 search-area">
+            <form id="city-form">
+              <div class="search-wrap shadow-sm">
+                <input
+                  class="search-input-area"
+                  type="text"
+                  placeholder="Search City"
+                  id="search-city-input"
+                />
+                <button type="submit" class="search-button" id="search-enter">
+                  <i class="fas fa-search search-icon"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-2 button">
+            <button
+              type="button"
+              class="btn btn-success home-button"
+              id="home-button"
+            >
+              Home
+            </button>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-7 today-data">
+            <ul>
+              <li>
+                <h1 id="city-name">
+                  Hamburg
+                </h1>
+              </li>
+              <li>
+                <h5 id="current-day-information">
+                  current situation
+                </h5>
+              </li>
+              <li>
+                <span class="temperature" id="temperature">
+                  22
+                </span>
+                <span class="units">
+                  <a href="#" id="celsius"> ˚C </a> |
+                  <a href="#" id="fahrenheit"> ˚F </a>
+                </span>
+              </li>
+              <li>
+                <p class="day-mode" id="day-mode">
+                  Sunny
+                </p>
+              </li>
+              <li class="real-feel">
+                Real feel <span id="real-feel-tempt">21</span>
+              </li>
+            </ul>
+          </div>
+          <div class="col-5">
+            <i class="fas fa-sun main-sun"></i>
+          </div>
+        </div>
+
+        <hr />
+        <h3>Hourly <i class="fas fa-sort-down"></i></h3>
+
+        <div class="other-weather-wrap">
+          <div class="row">
+            <div class="col first-column">
+              <p class="other-time">
+                17:00
+              </p>
+
+              <p class="other-weather-image">
+                <i class="fas fa-sun"></i>
+              </p>
+
+              <p class="rain-prediction">
+                ☔️ 4%
+              </p>
+
+              <p class="other-temperature">
+                22˚C
+              </p>
+            </div>
+
+            <div class="col second-column">
+              <p class="other-time">
+                18:00
+              </p>
+
+              <p class="other-weather-image">
+                <i class="fas fa-sun"></i>
+              </p>
+
+              <p class="rain-prediction">
+                ☔️ 4%
+              </p>
+
+              <p class="other-temperature">
+                21˚C
+              </p>
+            </div>
+
+            <div class="col third-column">
+              <p class="other-time">
+                19:00
+              </p>
+
+              <p class="other-weather-image">
+                <i class="fas fa-sun"></i>
+              </p>
+
+              <p class="rain-prediction">
+                ☔️ 4%
+              </p>
+
+              <p class="other-temperature">
+                21˚C
+              </p>
+            </div>
+
+            <div class="col forth-column">
+              <p class="other-time">
+                20:00
+              </p>
+
+              <p class="other-weather-image">
+                <i class="fas fa-sun"></i>
+              </p>
+
+              <p class="rain-prediction">
+                ☔️ 4%
+              </p>
+
+              <p class="other-temperature">
+                20˚C
+              </p>
+            </div>
+
+            <div class="col fifth-column">
+              <p class="other-time">
+                21:00
+              </p>
+
+              <p class="other-weather-image">
+                <i class="fas fa-moon"></i>
+              </p>
+
+              <p class="rain-prediction">
+                ☔️ 4%
+              </p>
+
+              <p class="other-temperature">
+                19˚C
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="source/index.js"></script>
+  </body>
+</html>
