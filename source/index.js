@@ -51,34 +51,37 @@ h5.innerHTML = `${day}, ${date} ${month} ${hours}:${min}`;
 function fahrenheitChange(event) {
   event.preventDefault();
   let temptElement = document.querySelector("#temperature");
-  let temperature = temptElement.innerHTML;
-  temperature = Number(temperature);
-  temptElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
+  let fahrenheitTemperature = (celsiusTemp * 9) / 5 + 32;
+  temptElement.innerHTML = Math.round(fahrenheitTemperature);
   let realFeelElement = document.querySelector("#real-feel-tempt");
-  let realFeelTemp = realFeelElement.innerHTML;
-  realFeelTemp = Number(realFeelTemp);
-  realFeelElement.innerHTML = Math.round((realFeelTemp * 9) / 5 + 32);
+  let realFeelTemperature = (celciusRealFeel * 9) / 5 + 32;
+  realFeelElement.innerHTML = Math.round(realFeelTemperature);
+
+  fahrenheitLinkButton.classList.add("active");
+  celsiusLinkButton.classList.remove("active");
 }
 
-let fahrenheitButton = document.querySelector("#fahrenheit");
-fahrenheitButton.addEventListener("click", fahrenheitChange);
+let fahrenheitLinkButton = document.querySelector("#fahrenheit");
+fahrenheitLinkButton.addEventListener("click", fahrenheitChange);
 
 // celsius button
 
 function celsiusChange(event) {
   event.preventDefault();
+  celsiusLinkButton.classList.add("active");
+  fahrenheitLinkButton.classList.remove("active");
   let temptElement = document.querySelector("#temperature");
-  let temperature = temptElement.innerHTML;
-  temperature = Number(temperature);
-  temptElement.innerHTML = Math.round(((temperature - 32) * 5) / 9);
+  temptElement.innerHTML = Math.round(celsiusTemp);
+
   let realFeelElement = document.querySelector("#real-feel-tempt");
-  let realFeelTemp = realFeelElement.innerHTML;
-  realFeelTemp = Number(realFeelTemp);
-  realFeelElement.innerHTML = Math.round(((realFeelTemp - 32) * 5) / 9);
+  realFeelElement.innerHTML = Math.round(celciusRealFeel);
 }
 
-let celsiusButton = document.querySelector("#celsius");
-celsiusButton.addEventListener("click", celsiusChange);
+let celsiusLinkButton = document.querySelector("#celsius");
+celsiusLinkButton.addEventListener("click", celsiusChange);
+
+let celsiusTemp = null;
+let celciusRealFeel = null;
 
 // home button
 
@@ -120,29 +123,34 @@ homeLocation.addEventListener("click", homePosition);
 // search city
 
 function searchCityElement(response) {
-  let currentTemp = Math.round(response.data.main.temp);
-  let cityTemp = document.querySelector("#temperature");
-  cityTemp.innerHTML = currentTemp;
-  let realFeelTemp = Math.round(response.data.main.feels_like);
-  let realFeelElement = document.querySelector("#real-feel-tempt");
-  realFeelElement.innerHTML = realFeelTemp;
+  celsiusTemp = response.data.main.temp;
+  celciusRealFeel = response.data.main.feels_like;
+  document.querySelector("#city-name").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
+
+  document.querySelector("#real-feel-tempt").innerHTML = Math.round(
+    celciusRealFeel
+  );
+
   let dayModeElement = document.querySelector("#day-mode");
   let dayMode = response.data.weather[0].description;
   dayModeElement.innerHTML = dayMode.charAt(0).toUpperCase() + dayMode.slice(1);
   console.log(response);
 }
 
-function searchCity(event) {
-  event.preventDefault();
-  let newCity = document.querySelector("#search-city-input");
-  let newCityName = newCity.value;
-  let cityName = document.querySelector("#city-name");
-  cityName.innerHTML =
-    newCityName.charAt(0).toUpperCase() + newCityName.slice(1);
-  newCity.value = "";
-  let apiUrlCity = `${apiEndpoint}?q=${newCityName}&appid=${apiKey}&units=${units}`;
+function searchCity(city) {
+  let apiUrlCity = `${apiEndpoint}?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrlCity).then(searchCityElement);
 }
 
+function submitCity(event) {
+  event.preventDefault();
+  let newCity = document.querySelector("#search-city-input");
+  searchCity(newCity.value);
+  newCity.value = "";
+}
+
 let newCity = document.querySelector("#city-form");
-newCity.addEventListener("submit", searchCity);
+newCity.addEventListener("submit", submitCity);
+
+searchCity("Hamburg");

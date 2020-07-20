@@ -131,12 +131,6 @@ p.day-mode {
   margin-bottom: 8px;
 }
 
-.units {
-  color: #5b6275;
-  position: relative;
-  top: -10px;
-}
-
 .real-feel {
   color: #686888;
   font-size: 16px;
@@ -196,4 +190,19 @@ p.other-time,
   line-height: 20px;
   font-weight: 600;
   margin-bottom: 0px;
+}
+
+.units {
+  color: #5b6275;
+  position: relative;
+  top: -10px;
+}
+
+.units .active {
+  color: #5b6275;
+  cursor: default;
+}
+
+.units .active:hover {
+  text-decoration: none;
 }
