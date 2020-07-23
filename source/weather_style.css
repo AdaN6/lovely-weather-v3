@@ -1,6 +1,7 @@
 h1,
 .temperature,
-h5 {
+h5,
+.footer {
   font-family: "IBM Plex Sans", sans-serif;
 }
 
@@ -205,4 +206,11 @@ p.other-time,
 
 .units .active:hover {
   text-decoration: none;
+}
+
+.footer {
+  margin-left: 6px;
+  margin-top: 8px;
+  color: #707070;
+  font-size: 14px;
 }
