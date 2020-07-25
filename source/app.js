@@ -87,7 +87,7 @@ let celciusRealFeel = null;
 // api data
 
 let apiKey = "6fc8ce6b2ba7060eef7f6f255898843a";
-let apiEndpoint = "http://api.openweathermap.org/data/2.5/weather";
+let apiEndpoint = "https://api.openweathermap.org/data/2.5/weather";
 let units = "metric";
 
 // html changes for city
