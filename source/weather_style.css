@@ -117,12 +117,10 @@ form {
   display: block;
 }
 
-.main-sun {
-  color: #f3ef1a;
-  font-size: 140px;
+.weather-icon {
   display: block;
-  text-align: right;
-  padding-top: 10px;
+  width: 160px;
+  height: 160px;
 }
 
 p.day-mode {
