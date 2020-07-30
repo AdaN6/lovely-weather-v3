@@ -119,6 +119,7 @@ form {
 
 .weather-icon {
   display: block;
+  margin: auto;
   width: 160px;
   height: 160px;
 }
@@ -137,24 +138,56 @@ p.day-mode {
   margin-bottom: 8px;
 }
 
-.first-column,
-.second-column,
-.third-column,
-.forth-column {
-  border-width: 0px 1px 0px 0px;
-  border-style: solid;
-  border-color: #c0c0c0;
-  border-image-source: linear-gradient(
-    rgba(222, 222, 222, 0) 0px,
-    rgb(222, 222, 222) 25%,
-    rgb(222, 222, 222) 70%,
-    rgba(222, 222, 222, 0) 85%,
-    rgba(222, 222, 222, 0)
-  );
-  border-image-slice: 1 100%;
-  border-image-width: 1;
-  border-image-outset: 0;
-  border-image-repeat: stretch;
+@media (min-width: 768px) {
+  .first-column,
+  .second-column,
+  .third-column,
+  .forth-column {
+    border-width: 0px 1px 0px 0px;
+    border-style: solid;
+    border-color: #c0c0c0;
+    border-image-source: linear-gradient(
+      rgba(222, 222, 222, 0) 0px,
+      rgb(222, 222, 222) 25%,
+      rgb(222, 222, 222) 70%,
+      rgba(222, 222, 222, 0) 85%,
+      rgba(222, 222, 222, 0)
+    );
+    border-image-slice: 1 100%;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+  }
+}
+
+@media (max-width: 375px) {
+  .first-column,
+  .second-column,
+  .third-column,
+  .forth-column {
+    border-width: 0px 0px 1px 0px;
+    border: 1px solid;
+    border-color: #c0c0c0;
+    border-image-source: linear-gradient(
+      90deg,
+      rgba(222, 222, 222, 0) 0px,
+      rgb(222, 222, 222) 45%,
+      rgb(222, 222, 222) 60%,
+      rgba(222, 222, 222, 0) 90%,
+      rgba(222, 222, 222, 0)
+    );
+    border-image-slice: 0 0 1 0;
+    border-image-width: 1;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    padding: 12px 0px;
+  }
+}
+
+@media (max-width: 375px) {
+  .fifth-column {
+    padding: 12px 0px 0px 0px;
+  }
 }
 
 p.other-time,
