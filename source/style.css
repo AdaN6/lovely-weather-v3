@@ -28,9 +28,9 @@ h5,
 }
 
 h5 {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 24px;
+  line-height: 20px;
   margin-bottom: 4px;
 }
 
@@ -125,9 +125,9 @@ hr {
 
 p.day-mode {
   color: #5b6275;
-  font-size: 22px;
-  line-height: 22px;
-  margin-bottom: 5px;
+  font-size: 20px;
+  line-height: 20px;
+  margin-bottom: 4px;
 }
 
 .real-feel {
@@ -187,9 +187,41 @@ p.other-time {
   margin-bottom: 0px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 411px) {
   .columns {
     padding: 0px 10px;
+  }
+
+  h1,
+  .temperature {
+    font-size: 28px;
+
+    line-height: 30px;
+  }
+
+  h5 {
+    font-size: 12px;
+
+    line-height: 14px;
+  }
+
+  p.day-mode {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+  .real-feel {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .weather-icon {
+    width: 122px;
+    height: 122px;
+  }
+
+  hr {
+    margin: 18px 0px;
   }
 
   .small-weather-icon {
@@ -201,11 +233,9 @@ p.other-time {
   }
 
   .other-temperature {
-    color: #5b6275;
     font-size: 16px;
     line-height: 16px;
     font-weight: 500;
-    margin-bottom: 0px;
   }
 
   .other-time {
