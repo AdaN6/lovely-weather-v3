@@ -64,6 +64,10 @@ function fahrenheitChange(event) {
   let realFeelTemperature = (celciusRealFeel * 9) / 5 + 32;
   realFeelElement.innerHTML = Math.round(realFeelTemperature);
 
+  let otherTempElement = document.querySelector("#other-temperature");
+  let otherTemp = (otherCelsiusTemp * 9) / 5 + 32;
+  otherTempElement.innerHTML = Math.round(otherTemp);
+
   fahrenheitLinkButton.classList.add("active");
   celsiusLinkButton.classList.remove("active");
 }
@@ -82,6 +86,9 @@ function celsiusChange(event) {
 
   let realFeelElement = document.querySelector("#real-feel-tempt");
   realFeelElement.innerHTML = Math.round(celciusRealFeel);
+
+  let otherTempElement = document.querySelector("#other-temperature");
+  otherTempElement.innerHTML = Math.round(otherCelsiusTemp);
 }
 
 let celsiusLinkButton = document.querySelector("#celsius");
@@ -89,6 +96,7 @@ celsiusLinkButton.addEventListener("click", celsiusChange);
 
 let celsiusTemp = null;
 let celciusRealFeel = null;
+let otherCelsiusTemp = null;
 
 // api data
 
@@ -101,6 +109,7 @@ let units = "metric";
 function searchCityElement(response) {
   celsiusTemp = response.data.main.temp;
   celciusRealFeel = response.data.main.feels_like;
+
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
 
@@ -153,6 +162,7 @@ function displayForecast(response) {
 
   for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
+    otherCelsiusTemp = forecast.main.temp;
     forecastElement.innerHTML += `
     <div class="col columns">
               <p class="other-time">
@@ -165,7 +175,7 @@ function displayForecast(response) {
                 }@2x.png" class="small-weather-icon"> </img>
              
 
-              <p class="other-temperature">
+              <p class="other-temperature" id="other-temperature">
                 ${Math.round(forecast.main.temp)}˚
               </p>
             </div>`;

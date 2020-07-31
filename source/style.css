@@ -154,6 +154,10 @@ p.day-mode {
     border-image-outset: 0;
     border-image-repeat: stretch;
   }
+
+  .columns:last-child {
+    border: none;
+  }
 }
 
 p.other-time {
