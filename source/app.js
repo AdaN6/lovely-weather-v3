@@ -66,7 +66,7 @@ function fahrenheitChange(event) {
 
   let otherTempElement = document.querySelector("#other-temperature");
   let otherTemp = (otherCelsiusTemp * 9) / 5 + 32;
-  otherTempElement.innerHTML = Math.round(otherTemp);
+  otherTempElement.innerHTML = `${Math.round(otherTemp)}˚`;
 
   fahrenheitLinkButton.classList.add("active");
   celsiusLinkButton.classList.remove("active");
@@ -88,7 +88,7 @@ function celsiusChange(event) {
   realFeelElement.innerHTML = Math.round(celciusRealFeel);
 
   let otherTempElement = document.querySelector("#other-temperature");
-  otherTempElement.innerHTML = Math.round(otherCelsiusTemp);
+  otherTempElement.innerHTML = `${Math.round(otherCelsiusTemp)}˚`;
 }
 
 let celsiusLinkButton = document.querySelector("#celsius");
