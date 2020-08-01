@@ -64,9 +64,11 @@ function fahrenheitChange(event) {
   let realFeelTemperature = (celciusRealFeel * 9) / 5 + 32;
   realFeelElement.innerHTML = Math.round(realFeelTemperature);
 
-  let otherTempElement = document.querySelector("#other-temperature");
-  let otherTemp = (otherCelsiusTemp * 9) / 5 + 32;
-  otherTempElement.innerHTML = `${Math.round(otherTemp)}˚`;
+  let forecastItems = document.querySelectorAll(".other-temperature");
+
+  forecastItems.forEach(function (item) {
+    item.innerHTML = `${Math.round((otherCelsiusTemp * 9) / 5 + 32)}˚`;
+  });
 
   fahrenheitLinkButton.classList.add("active");
   celsiusLinkButton.classList.remove("active");
@@ -87,8 +89,11 @@ function celsiusChange(event) {
   let realFeelElement = document.querySelector("#real-feel-tempt");
   realFeelElement.innerHTML = Math.round(celciusRealFeel);
 
-  let otherTempElement = document.querySelector("#other-temperature");
-  otherTempElement.innerHTML = `${Math.round(otherCelsiusTemp)}˚`;
+  let forecastItems = document.querySelectorAll(".other-temperature");
+
+  forecastItems.forEach(function (item) {
+    item.innerHTML = `${Math.round(otherCelsiusTemp)}˚`;
+  });
 }
 
 let celsiusLinkButton = document.querySelector("#celsius");
