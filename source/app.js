@@ -66,8 +66,8 @@ function fahrenheitChange(event) {
 
   let forecastItems = document.querySelectorAll(".other-temperature");
 
-  forecastItems.forEach(function (item) {
-    item.innerHTML = `${Math.round((otherCelsiusTemp * 9) / 5 + 32)}˚`;
+  forecastItems.forEach(function (item, index) {
+    item.innerHTML = `${Math.round((otherCelsiusTemp[index] * 9) / 5 + 32)}˚`;
   });
 
   fahrenheitLinkButton.classList.add("active");
@@ -91,8 +91,8 @@ function celsiusChange(event) {
 
   let forecastItems = document.querySelectorAll(".other-temperature");
 
-  forecastItems.forEach(function (item) {
-    item.innerHTML = `${Math.round(otherCelsiusTemp)}˚`;
+  forecastItems.forEach(function (item, index) {
+    item.innerHTML = `${Math.round(otherCelsiusTemp[index])}˚`;
   });
 }
 
@@ -101,7 +101,7 @@ celsiusLinkButton.addEventListener("click", celsiusChange);
 
 let celsiusTemp = null;
 let celciusRealFeel = null;
-let otherCelsiusTemp = null;
+let otherCelsiusTemp = [];
 
 // api data
 
@@ -167,7 +167,7 @@ function displayForecast(response) {
 
   for (let index = 0; index < 5; index++) {
     forecast = response.data.list[index];
-    otherCelsiusTemp = forecast.main.temp;
+    otherCelsiusTemp[index] = forecast.main.temp;
     forecastElement.innerHTML += `
     <div class="col columns">
               <p class="other-time">
